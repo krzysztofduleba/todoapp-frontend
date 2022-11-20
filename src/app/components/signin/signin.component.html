@@ -1,0 +1,59 @@
+<main>
+  <div class="container">
+    <div class="bg-white shadow-lg my-3 rounded">
+      <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit(signInForm.value)" class="sign-in py-3">
+        <img class="mb-4" src="assets/img/logo.svg" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+
+        <ng-container *ngIf="submitted && fval.username.errors">
+          <div *ngIf="fval.username.errors.required" class="alert alert-danger" role="alert">
+            Username is required!
+          </div>
+          <div *ngIf="fval.username.errors.minlength" class="alert alert-danger" role="alert">
+            Username must be 4-50 characters long!
+          </div>
+          <div *ngIf="fval.username.errors.maxlength" class="alert alert-danger" role="alert">
+            Username must be 4-50 characters long!
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="submitted && fval.password.errors">
+          <div *ngIf="fval.password.errors.required" class="alert alert-danger" role="alert">
+            Password is required!
+          </div>
+          <div *ngIf="fval.password.errors.minlength" class="alert alert-danger" role="alert">
+            Password must be 8-50 characters long!
+          </div>
+          <div *ngIf="fval.password.errors.maxlength" class="alert alert-danger" role="alert">
+            Password must be 8-50 characters long!
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="signedIn">
+          <div class="alert alert-success" role="alert">
+            Success! You can sign in now.
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="submitted && error">
+          <div class="alert alert-danger" role="alert">
+            Error! Incorrect username or password.
+          </div>
+        </ng-container>
+
+        <div class="form-floating">
+          <input formControlName="username" type="text" class="form-control" id="floatingInput"
+            placeholder="name@example.com">
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+          <input formControlName="password" type="password" class="form-control" id="floatingPassword"
+            placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
+        <div class="mt-3">New user? Sign up <a routerLink="/signup">here</a></div>
+      </form>
+    </div>
+  </div>
+</main>

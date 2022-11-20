@@ -1,0 +1,53 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom border-bottom border-secondary" id="header-navbar">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/home">
+        <img src="assets/img/logo.svg" alt="" width="40" height="32">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/projects/today" routerLinkActive="active">Projects</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <ng-container *ngIf="!isAuthenticated()">
+            <li class="nav-item">
+              <a class="nav-link" href="#" routerLink="/signin" routerLinkActive="active">
+                <i class="bi bi-box-arrow-in-right pe-1"></i>
+                <span>Sign in</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/signup" routerLinkActive="active">
+                <i class="bi bi-door-open pe-1"></i>
+                <span>Sign up</span>
+              </a>
+            </li>
+          </ng-container>
+          <ng-container *ngIf="isAuthenticated()">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/account" routerLinkActive="active">
+                <i class="bi bi-person pe-1"></i>
+                <span>Your profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/signout" routerLinkActive="active">
+                <i class="bi bi-box-arrow-left pe-1"></i>
+                <span>Sign out</span>
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

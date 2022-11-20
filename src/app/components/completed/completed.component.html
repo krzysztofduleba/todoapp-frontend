@@ -1,0 +1,23 @@
+<div class="container bg-white shadow-lg rounded">
+  <div class="row">
+    <aside class="bg-light" style="width: 280px">
+      <app-sidebar></app-sidebar>
+    </aside>
+    <main class="col border">
+      <ng-container *ngIf="completedItems">
+        <ng-container *ngFor="let item of completedItems">
+          <div class="card my-2">
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{item.description}}</h6>
+              <p class="card-text"><small class="text-muted">{{item.date}}</small></p>
+              <div class="col-lg-12 text-center">
+                <button type="button" class="btn btn-secondary" (click)="restoreTask(item.id)">Restore</button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </main>
+  </div>
+</div>

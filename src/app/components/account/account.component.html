@@ -1,0 +1,37 @@
+<div class="container bg-white shadow-lg rounded">
+  <ng-container *ngIf="username">
+    <h1 class="py-2">Hello, {{username}}!</h1>
+  </ng-container>
+  <div class="col-12 text-center">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#changePasswordModal"
+      class="btn btn-secondary mb-2">Change
+      password</button>
+  </div>
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <ng-container *ngIf="submitted && changePasswordServerError">
+          <div class="alert alert-danger" role="alert">
+            Entered password is incorrect!
+          </div>
+        </ng-container>
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Change password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword(changePasswordForm.value)">
+          <div class="modal-body">
+            <label for="currentPassword" class="form-label">Current password</label>
+            <input formControlName="currentPassword" type="password" class="form-control" id="currentPassword" required>
+            <label for="newPassword" class="form-label">New password</label>
+            <input formControlName="newPassword" type="password" class="form-control" id="newPassword" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

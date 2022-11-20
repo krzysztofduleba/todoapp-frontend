@@ -1,0 +1,25 @@
+<main>
+  <div class="container">
+    <div class="px-4 py-5 my-3 text-center bg-white shadow-lg rounded">
+      <img class="d-block mx-auto mb-3" src="assets/img/logo.svg" alt="" width="72" height="57">
+      <h1 class="display-5 fw-bold mb-3">Task management App</h1>
+      <div *ngIf="!isLoggedIn">
+        <div class="col-lg-6 mx-auto">
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a routerLink="/signup">
+              <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Get started</button>
+            </a>
+            <a routerLink="/signin">
+              <button type="button" class="btn btn-outline-secondary btn-lg px-4">Sign in</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isLoggedIn" class="mt-4">
+        <a routerLink="/signout">
+          <button type="button" class="btn btn-outline-danger btn-lg px-4">Sign out</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

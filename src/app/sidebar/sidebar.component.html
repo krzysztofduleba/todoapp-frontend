@@ -1,0 +1,43 @@
+<div class="m-2">
+  <div class="fs-5 text-center">General</div>
+  <ul class="mb-3 list-unstyled ul-custom">
+    <li><a routerLink="/projects/today" routerLinkActive="active"><i class="bi bi-calendar me-1"></i>Today</a></li>
+    <li><a routerLink="/projects/completed" routerLinkActive="active"><i
+          class="bi bi-check-square me-1"></i>Completed</a></li>
+  </ul>
+
+  <div class="fs-5 text-center">Projects</div>
+  <ul class="mb-3 list-unstyled ul-custom">
+    <ng-container *ngFor="let list of lists">
+      <li><a routerLink="/projects/project/" routerLinkActive="active" [queryParams]="{id: list.id}">{{list.name}}</a>
+      </li>
+    </ng-container>
+  </ul>
+
+  <div class="text-center">
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#newProjectModal">
+      New project
+    </button>
+  </div>
+
+  <div class="modal fade" id="newProjectModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Create new project</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="createProjectForm" (ngSubmit)="createProject(createProjectForm.value)">
+          <div class="modal-body">
+            <label for="projectName" class="form-label">Project name</label>
+            <input formControlName="name" type="text" class="form-control" id="projectName" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" type="submit">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

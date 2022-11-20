@@ -1,0 +1,16 @@
+.ul-custom li {
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.ul-custom li:hover, .ul-custom li:focus {
+  background-color: #d2f4ea;
+}
+
+.ul-custom a {
+  text-decoration: none;
+}
+
+.active {
+  color: red;
+}
